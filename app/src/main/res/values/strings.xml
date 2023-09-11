@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calculadora_P1</string>
+    <string name="Resultado">0</string>
+
+    <string name="Number_0">0</string>
+    <string name="Number_1">1</string>
+    <string name="Number_2">2</string>
+    <string name="Number_3">3</string>
+    <string name="Number_4">4</string>
+    <string name="Number_5">5</string>
+    <string name="Number_6">6</string>
+    <string name="Number_7">7</string>
+    <string name="Number_8">8</string>
+    <string name="Number_9">9</string>
+    <string name="Point">.</string>
+    <string name="Equal">=</string>
+
+    <string name="Add">+</string>
+    <string name="Sub">-</string>
+    <string name="Multiply">*</string>
+    <string name="Divide">/</string>
+
+</resources>
