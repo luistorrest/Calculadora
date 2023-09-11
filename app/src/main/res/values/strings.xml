@@ -19,5 +19,6 @@
     <string name="Sub">-</string>
     <string name="Multiply">*</string>
     <string name="Divide">/</string>
+    <string name="Delete">Delete</string>
 
 </resources>
