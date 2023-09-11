@@ -1,6 +1,5 @@
 package com.luistorrest.calculadora_p1
 
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,59 +8,65 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
 
-    var Resultado_TextView:TextView?=null
+    // Declaración de la vista de resultado
+    var resultadoTextView: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Resultado_TextView=findViewById(R.id.Resultado_TextView)
+        // Inicialización de la vista de resultado
+        resultadoTextView = findViewById(R.id.Resultado_TextView)
     }
-    fun calcular(view : View) {
 
-        var press_button = view as Button
-        var text_button = press_button.text.toString()
-        var concatenar_textView = Resultado_TextView?.text.toString()+text_button
-        var concatenarSinCeros = quitarCerosIzquirda(concatenar_textView)
+    fun calcular(view: View) {
 
-        if(text_button=="=") {
-            var resultado=0.0
-            resultado = evaluarExpresionMatematicaSimple(Resultado_TextView?.text.toString())
-            Resultado_TextView?.text=resultado.toString()
-        }else if(text_button=="Delete"){
-            Resultado_TextView?.text="0"
-        }else{
-            Resultado_TextView?.text = concatenarSinCeros
+        // Obtiene el botón presionado
+        val botonPresionado = view as Button
+        val textoBoton = botonPresionado.text.toString()
+
+        // Concatena el texto del botón con el texto actual en la vista de resultado
+        val textoConcatenado = resultadoTextView?.text.toString() + textoBoton
+
+        // Elimina los ceros a la izquierda en la cadena concatenada
+        val textoSinCeros = quitarCerosIzquierda(textoConcatenado)
+
+        if (textoBoton == "=") {
+            // Evalúa la expresión matemática y muestra el resultado
+            val resultado = evaluarExpresionMatematicaSimple(resultadoTextView?.text.toString())
+            resultadoTextView?.text = resultado.toString()
+        } else if (textoBoton == "Delete") {
+            // Borra el contenido de la vista de resultado
+            resultadoTextView?.text = "0"
+        } else {
+            // Muestra la cadena sin ceros en la vista de resultado
+            resultadoTextView?.text = textoSinCeros
         }
     }
-    fun quitarCerosIzquirda(str : String):String{
-            var i=0
-            while (i<str.length && str[i]=='0')i++
-            val sb=StringBuffer(str)
-            sb.replace(0,i,"")
-            return sb.toString()
-        }
 
+    // Elimina ceros a la izquierda de la cadena
+    fun quitarCerosIzquierda(str: String): String {
+        var i = 0
+        while (i < str.length && str[i] == '0') i++
+        val sb = StringBuffer(str)
+        sb.replace(0, i, "")
+        return sb.toString()
+    }
+
+    // Función para evaluar expresiones matemáticas simples
     fun evaluarExpresionMatematicaSimple(expresion: String): Double {
         return object : Any() {
             var pos = -1
             var ch = 0
 
-            /**
-             * Avanza al siguiente carácter en la expresión de entrada.
-             */
+            // Avanza al siguiente carácter en la expresión de entrada
             fun siguienteCaracter() {
-                ch = if (++pos < expresion.length) expresion[pos].toInt() else -1
+                ch = if (++pos < expresion.length) expresion[pos].code else -1
             }
 
-            /**
-             * Consume caracteres de espacio en blanco y avanza al siguiente carácter que no sea espacio en blanco.
-             *
-             * @param charToEat El carácter que se debe consumir.
-             * @return True si se consume el carácter especificado, false en caso contrario.
-             */
+            // Consume caracteres de espacio en blanco y avanza al siguiente carácter que no sea espacio en blanco
             fun consumir(charToEat: Int): Boolean {
-                while (ch == ' '.toInt()) siguienteCaracter()
+                while (ch == ' '.code) siguienteCaracter()
                 if (ch == charToEat) {
                     siguienteCaracter()
                     return true
@@ -69,12 +74,7 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
 
-            /**
-             * Analiza la expresión matemática y devuelve el resultado.
-             *
-             * @return El resultado de evaluar la expresión como un Double.
-             * @throws RuntimeException Si hay caracteres inesperados en la expresión.
-             */
+            // Analiza la expresión matemática y devuelve el resultado
             fun analizar(): Double {
                 siguienteCaracter()
                 val x = analizarExpresion()
@@ -82,14 +82,12 @@ class MainActivity : AppCompatActivity() {
                 return x
             }
 
-            // Resto del código para analizar expresiones, términos y factores
-            // (solo suma, resta, multiplicación y división)
-
+            // Resto del código para analizar expresiones, términos y factores (solo suma, resta, multiplicación y división)
             fun analizarExpresion(): Double {
                 var x = analizarTermino()
                 while (true) {
-                    if (consumir('+'.toInt())) x += analizarTermino() // suma
-                    else if (consumir('-'.toInt())) x -= analizarTermino() // resta
+                    if (consumir('+'.code)) x += analizarTermino() // suma
+                    else if (consumir('-'.code)) x -= analizarTermino() // resta
                     else return x
                 }
             }
@@ -97,20 +95,20 @@ class MainActivity : AppCompatActivity() {
             fun analizarTermino(): Double {
                 var x = analizarFactor()
                 while (true) {
-                    if (consumir('*'.toInt())) x *= analizarFactor() // multiplicación
-                    else if (consumir('/'.toInt())) x /= analizarFactor() // división
+                    if (consumir('*'.code)) x *= analizarFactor() // multiplicación
+                    else if (consumir('/'.code)) x /= analizarFactor() // división
                     else return x
                 }
             }
 
             fun analizarFactor(): Double {
-                if (consumir('('.toInt())) {
+                if (consumir('('.code)) {
                     val x = analizarExpresion()
-                    consumir(')'.toInt())
+                    consumir(')'.code)
                     return x
                 } else {
                     val startPos = pos
-                    while (ch >= '0'.toInt() && ch <= '9'.toInt() || ch == '.'.toInt()) {
+                    while (ch >= '0'.code && ch <= '9'.code || ch == '.'.code) {
                         siguienteCaracter()
                     }
                     return expresion.substring(startPos, pos).toDouble()
@@ -119,5 +117,4 @@ class MainActivity : AppCompatActivity() {
 
         }.analizar()
     }
-
 }
