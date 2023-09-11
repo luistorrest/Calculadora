@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_7"
                 android:textSize="34sp"
                 tools:text="@string/Number_7" />
 
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_8"
                 android:textSize="34sp"
                 tools:text="@string/Number_8" />
 
@@ -45,7 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_9"
                 android:textSize="34sp"
                 tools:text="@string/Number_9" />
         </TableRow>
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_4"
                 android:textSize="34sp"
                 tools:text="@string/Number_4" />
 
@@ -69,7 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_5"
                 android:textSize="34sp"
                 tools:text="@string/Number_5" />
 
@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_6"
                 android:textSize="34sp"
                 tools:text="@string/Number_6" />
         </TableRow>
@@ -93,7 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_1"
                 android:textSize="34sp"
                 tools:text="@string/Number_1" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_2"
                 android:textSize="34sp"
                 tools:text="@string/Number_2" />
 
@@ -111,12 +111,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Number_3"
                 android:textSize="34sp"
                 tools:text="@string/Number_3" />
         </TableRow>
 
         <TableRow
+            android:id="@+id/Fila_4_TableRow"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -125,7 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Point"
                 android:textSize="34sp"
                 tools:text="@string/Point" />
 
@@ -139,16 +140,17 @@
                 tools:text="@string/Number_0" />
 
             <Button
-                android:id="@+id/Equal_Button"
+                android:id="@+id/Dividl_Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Equal"
+                android:text="@string/Divide"
                 android:textSize="34sp"
-                tools:text="@string/Equal" />
+                tools:text="@string/Divide" />
         </TableRow>
 
         <TableRow
+            android:id="@+id/Fila_5_TableRow"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -157,7 +159,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Add"
                 android:textSize="34sp"
                 tools:text="@string/Add" />
 
@@ -166,18 +168,34 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Sub"
                 android:textSize="34sp"
                 tools:text="@string/Sub" />
 
             <Button
-                android:id="@+id/Divide_Button"
+                android:id="@+id/Multiply_Button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button"
+                android:text="@string/Multiply"
                 android:textSize="34sp"
-                tools:text="@string/Divide" />
+                tools:text="@string/Multiply" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/Resultado_TableRow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/Equal_Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Equal"
+                android:textSize="34sp"
+                tools:text="@string/Equal" />
+
         </TableRow>
 
     </TableLayout>
